@@ -1,0 +1,81 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #45283a;
+  background: #fff0f5;
+}
+
+#contenedor {
+  max-width: 960px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 0 40px rgba(91, 42, 67, .12);
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 24px;
+  background: #b6517e;
+}
+#header a { color: #fff0f5; text-decoration: none; }
+.marca { font-size: 1.5rem; font-weight: bold; }
+#header nav { display: flex; align-items: center; gap: 16px; }
+
+#cuerpo { flex: 1; padding: 32px 24px; }
+h1 { margin-bottom: 20px; }
+
+a { color: #87385d; }
+
+.boton, button {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #87385d;
+  color: #fff !important;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+button.peligro { background: #b3261e; }
+#header .boton { background: #fff0f5; color: #87385d !important; }
+
+.busqueda { display: flex; gap: 8px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+input, select {
+  padding: 8px 10px;
+  border: 1px solid #d8a9bf;
+  border-radius: 8px;
+  font: inherit;
+  width: 100%;
+}
+.busqueda input { width: auto; flex: 1; min-width: 200px; }
+
+.tabla-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px; text-align: left; border-bottom: 1px solid #f0d5e0; }
+th { background: #fbe4ee; }
+.acciones { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.acciones form { display: inline; }
+.total { margin-top: 12px; color: #87385d; }
+
+.ficha { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin-bottom: 24px; }
+.ficha dt { font-weight: bold; }
+
+.formulario { display: grid; gap: 16px; max-width: 420px; }
+.formulario label { display: grid; gap: 6px; font-weight: bold; }
+
+.aviso { padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; }
+.aviso.ok { background: #e3f6e8; color: #1d5b31; }
+.aviso.error { background: #fde4e2; color: #8a1c14; }
+
+#footer { padding: 18px 24px; background: #45283a; color: #fff0f5; font-size: .95rem; }
+#footer p + p { margin-top: 4px; }
+#footer a { color: #f5ccda; }

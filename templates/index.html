@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Registro de jugadores</h1>
+
+<form method="get" class="busqueda">
+  <input type="search" name="q" value="{{ q }}" placeholder="Buscar por nombre o país">
+  <button type="submit">Buscar</button>
+  {% if q %}<a href="{{ url_for('index') }}">Limpiar</a>{% endif %}
+</form>
+
+{% if jugadores %}
+<div class="tabla-wrap">
+<table>
+  <thead>
+    <tr><th>#</th><th>Nombre</th><th>País</th><th>Rating</th><th>Título</th><th>Acciones</th></tr>
+  </thead>
+  <tbody>
+    {% for j in jugadores %}
+    <tr>
+      <td>{{ j.id }}</td>
+      <td><a href="{{ url_for('detalle', jid=j.id) }}">{{ j.nombre }}</a></td>
+      <td>{{ j.pais }}</td>
+      <td>{{ j.rating }}</td>
+      <td>{{ j.titulo }}</td>
+      <td class="acciones">
+        <a href="{{ url_for('detalle', jid=j.id) }}">Ver</a>
+        <a href="{{ url_for('editar', jid=j.id) }}">Editar</a>
+        <form method="post" action="{{ url_for('eliminar', jid=j.id) }}"
+              onsubmit="return confirm('¿Eliminar a {{ j.nombre|e }}?');">
+          <button type="submit" class="peligro">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<p class="total">{{ jugadores|length }} jugador(es)</p>
+{% else %}
+<p>No hay jugadores{% if q %} que coincidan con "{{ q }}"{% endif %}.</p>
+{% endif %}
+{% endblock %}

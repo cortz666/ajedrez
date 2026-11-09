@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %}{{ accion }}{% endblock %}
+{% block contenido %}
+<h1>{{ accion }}</h1>
+<form method="post" class="formulario">
+  <label>Nombre
+    <input type="text" name="nombre" value="{{ j['nombre'] }}" required maxlength="80">
+  </label>
+  <label>País
+    <input type="text" name="pais" value="{{ j['pais'] }}" required maxlength="60">
+  </label>
+  <label>Rating (0–3000)
+    <input type="number" name="rating" value="{{ j['rating'] }}" required min="0" max="3000">
+  </label>
+  <label>Título
+    <select name="titulo">
+      {% for t in titulos %}
+      <option value="{{ t }}" {% if j['titulo'] == t %}selected{% endif %}>{{ t }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <div class="acciones">
+    <button type="submit" class="boton">Guardar</button>
+    <a href="{{ url_for('index') }}">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

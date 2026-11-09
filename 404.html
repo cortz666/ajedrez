@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>No encontrado</h1>
+<p>Ese jugador no existe (quizá ya fue eliminado).</p>
+<p><a href="{{ url_for('index') }}">← Volver a la lista</a></p>
+{% endblock %}

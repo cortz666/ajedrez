@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}{{ j.nombre }}{% endblock %}
+{% block contenido %}
+<h1>{{ j.nombre }}</h1>
+<dl class="ficha">
+  <dt>ID</dt><dd>{{ j.id }}</dd>
+  <dt>País</dt><dd>{{ j.pais }}</dd>
+  <dt>Rating</dt><dd>{{ j.rating }}</dd>
+  <dt>Título</dt><dd>{{ j.titulo }}</dd>
+  <dt>Registrado</dt><dd>{{ j.fecha_registro }}</dd>
+</dl>
+<div class="acciones">
+  <a href="{{ url_for('index') }}">← Volver</a>
+  <a href="{{ url_for('editar', jid=j.id) }}" class="boton">Editar</a>
+  <form method="post" action="{{ url_for('eliminar', jid=j.id) }}"
+        onsubmit="return confirm('¿Eliminar a {{ j.nombre|e }}?');">
+    <button type="submit" class="peligro">Eliminar</button>
+  </form>
+</div>
+{% endblock %}
